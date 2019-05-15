@@ -1,0 +1,153 @@
+#8.1定义函数：def 函数，打印问候的简单函数
+#显示简单的问候：greet——user
+def greet_user():
+     print("hello!")
+greet_user()
+
+#编写一个名为display_message()的函数，它打印一个句子，指出你在本章学的内容
+#并调用这个函数，显示正确无误
+def display_message():
+	print("本章学习的内容:display_message()")
+display_message()
+	
+  #8.1.1向函数传递信息
+#调用greet函数并向传递名字
+#形参和实参  实参势必调用函数是传递给函数的信息 
+#在greet_user('jesse ')中，将实参‘jess’传递给函数greet_user(),这个值储存在形参username中
+def greet_user(username):
+	print("hello  "+ username.title() + "!")
+greet_user('jesse')
+
+
+#8-2喜欢的图书，编写一个名为favorite_book（）的函数
+#其中包含一个名为tittle的形参
+#这个函数打印一条消息，如one of my favorite book is alice in wonderland
+#调用这个函数， 并将一本图书的名称作为实参传递给它
+def favorite_book(title):
+	print("one of my favorite book is:" +title)
+favorite_book('alice in wonderland')
+
+
+#编写一个名为make_shirt()的函数，让接受一个尺码以及要印到t 上的字样
+#这个函数打印一个句子，概要说明t恤的尺寸和字样
+def make_shirt(size,name):
+	if name == " ":
+		print("这件t恤的尺寸是： " +size+ ";印花文字为：空")
+	else:
+		print("这件t恤的尺寸是：" +size+ ";印花文字为" +name)
+make_shirt('xxxl',' ')
+make_shirt('m','sophina')
+
+
+#传递实参：函数中可以有多个形参，同时也可能会有多个实参，所以可以使用位置实参：要求实参的位置与形参的顺序相同
+#8.2.1位置实参
+#宠物信息的函数，指出一个宠物属于那种动物，叫什么名字
+describe_pet(animal_tpye,pet_name):
+#def describe_pet(pet_name,animal_tpye='dog'):
+	#默认参数 animal_type=dog
+	print("\nI have a  " +animal_tpye+ ".")
+	print("my " +animal_tpye+ "'s name is " +pet_name.title()+ ".")
+describe_pet('hamster','harry')
+#调用函数多次;直接在后面加上调用的形参
+describe_pet('dog','willie')
+#关键字实参是传递给函数的名称-值对，直接把名称和值关联起来
+describe_pet(animal_tpye='cat',pet_name='marry')
+#describe_pet(pet_name='sophina')
+#默认值的输出
+
+
+#返回值return语句，将值返回到调用函数的代码行
+#让实参可以选
+def get_formatted_name(first_name,last_name,middle_name=' '):
+	if middle_name:
+		full_name =first_name + ' ' +middle_name+ ' '+ last_name
+	else:
+		full_name =first_name+ ' ' +last_name
+	return full_name.title()
+
+musician =get_formatted_name('jimi','lee','hendrix')
+print(musician)
+
+musician =get_formatted_name('john','hendrix')
+print(musician)
+#print 不需要缩进
+
+#返回字典，函数可返回任何类型的值，包含列表和字典等较复杂的数据结构
+#下面的函数接受姓名的组成部分，返回一个表示人的字典
+def bulid_person(first_name,last_name,age=''):
+	person ={'first':first_name , 'last':'last_name'}
+	#build_person()函数将这些值封装在字典中，存储first_name的值时，使用键‘first'，存储last_name的值时，使用键‘last’
+	if age:
+		person['age']=age
+	return(person)
+musician = bulid_person('jimi','hendrix',age=27)
+print(musician)
+
+#结合使用函数和while循环
+def get_formatted_name(first_name,last_name):
+	full_name = first_name + ' ' +last_name
+	return full_name.title()
+
+while True:
+	print("\nplesase tell me your name:")
+	print("(enter 'q' at any time to quit)")
+	f_name = input("first_name: ")
+	if f_name == 'q':
+		break
+
+	l_name = input("last_name: ")
+	if l_name == 'q':
+		break
+
+	formatted_name = get_formatted_name(f_name,l_name)
+	print("\nHello, " +formatted_name + " !")
+  
+  
+  #在函数中修改列表：将列表给函数后，函数就可对其进行修改
+#首先创建一个列表，其中包含一些要打印的设计 定义函数的列表
+unprinted_designs = ['iphone case','robot pendant','dodecaheron']
+completed_models = []
+
+
+#模拟打印每个设计，直到没有未打印的设计为止
+#打印每个设计后，都将移到列表completed_models中
+while unprinted_designs:
+	curren_design = unprinted_designs.pop()
+
+	#模拟根据设计制作3d打印模型的过程
+	print("Printing model: " +curren_design)
+	completed_models.append(curren_design)
+
+#显示打印好所有模型
+print("\nThe following models have been printed: ")
+
+#completed_model条件循环
+for completed_model in completed_models:
+	print(completed_model)
+  
+  
+  #定义print_model函数
+def print_models(unprinted_designs,completed_models):
+
+	while unprinted_designs:
+
+		current_design = unprinted_designs.pop()
+
+		print("Printing model: " + current_design)
+		completed_models.append(current_design)
+
+#定义completed_models函数
+def show_completed_models(completed_models):
+	#显示打印好的所有模型
+	print("\nThe following models have been printed:")
+	for completed_model in completed_models:
+		print(completed_model)
+
+#定义unprinted_designs,completed_models列表
+unprinted_designs = ['iphone case','robot pendant','dodecahedron']
+completed_models = []
+
+#封装两个函数
+print_models(unprinted_designs,completed_models)
+show_completed_models(completed_models)
+
